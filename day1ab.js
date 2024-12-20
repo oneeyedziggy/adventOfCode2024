@@ -1014,11 +1014,20 @@ parsedInput[1] = parsedInput[1].sort();
   
 console.log(parsedInput);
   
-const result = parsedInput[0].reduce((acc, item, index) => {
+const resultA = parsedInput[0].reduce((acc, item, index) => {
   acc += Math.abs( item - parsedInput[1][index] );
   return acc;
 },0);
   
-console.log('result:', result);
-
+console.log('resultA:', resultA);
+	
+const resultB = parsedInput[0].reduce((acc, item, index) => {
+  if(parsedInput[1].includes(item)){
+  	acc += item * parsedInput[1].filter( innerItem=>innerItem===item).length;
+  }
+  return acc;
+},0);
+  
+  
+console.log('resultB:', resultB);
 })();
