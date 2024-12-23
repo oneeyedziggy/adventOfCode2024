@@ -1003,6 +1003,31 @@
 47 50 53 54 57 58 60 61
 59 58 55 53 52`;
   
+  
+//   1 2 3 4 5
+//   5 4 3 2 1
+//   1 2 3 4 5 6 
+//   1 2 3 4 5 6 7
+//   1 2 3 4 5 6 7 8
+//   6 5 4 3 2 1
+//   7 6 5 4 3 2 1
+//   8 7 6 5 4 3 2 1
+//   1 3 5 7 9
+//   1 4 7 10 13
+//   1 1 2 3 4
+//   4 3 2 1 1
+//   1 5 9 13 17
+  
+//   const input = `1 6 11 16 21
+//   21 16 1 6 1
+//   21 16 1 6 1
+//   21 16 1 6 1
+//   21 16 1 6 1//   `;
+  
+//   const input = `1 6 11 16 21
+//   1 6 11 16 21
+//   1 6 11 16 21`;
+  
 const STATUSES = {
   SAFE: 'Safe',
   UNSAFE: 'Unsafe'
@@ -1019,8 +1044,8 @@ const result = parsedInput.reduce((acc, item, outerIndex, fullInputArray)=>{
   let value;
   
   for(let innerIndex = 0; innerIndex < item.length; innerIndex++){
-    value = item[innerIndex];
-    if( previousValue ){
+    value = parseInt(item[innerIndex], 10);
+    if( previousValue !== undefined ){
       const diff = Math.abs(value - previousValue);
 			if( diff === 0 || diff > 3){
     		acc.push(STATUSES.UNSAFE);
